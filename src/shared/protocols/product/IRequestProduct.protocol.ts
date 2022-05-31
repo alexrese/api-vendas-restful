@@ -5,7 +5,7 @@ export interface IRequestCreateProduct {
 }
 
 export interface IRequestUpdateProduct extends IRequestCreateProduct{
-  id: number
+  id: string
 }
 
 export interface IRequestShowProductById {

@@ -40,9 +40,11 @@ export default class ProductController{
   }
 
   public async update(request: Request, response: Response): Promise<Response>{
+
     const { name, price, quantity } = request.body
-    const id  = Number(request.params.id)
+    const id  = request.params.id
     const updateProduct = new UpdateProductService()
+
     const product = await updateProduct.execute({
       id,
       name,
@@ -57,10 +59,10 @@ export default class ProductController{
   }
 
   public async delete(request: Request, response: Response): Promise<Response>{
-    const { id } = request.params.id
+    const id = request.params.id
     const deleteProduct = new DeleteProductService()
     await deleteProduct.execute({ id });
-    return response.status(StatusCodes.NoContent).json({
+    return response.status(StatusCodes.OK).json({
       message: 'Product deleted successfully'
     })
   }

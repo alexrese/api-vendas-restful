@@ -8,6 +8,7 @@ import { ProductRepository } from "../typeorm/repositories/ProductRepository";
 
 class UpdateProductService {
   public async execute({ id, name, price, quantity }: IRequestUpdateProduct): Promise<Product> {
+
     const productRepository = getCustomRepository(ProductRepository)
     let product = await productRepository.findOne(id)
 
@@ -22,6 +23,7 @@ class UpdateProductService {
     product.name = name
     product.price = price
     product.quantity = quantity
+
 
     await productRepository.save(product)
     return product
