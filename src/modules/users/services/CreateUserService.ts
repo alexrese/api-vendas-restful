@@ -16,7 +16,7 @@ class CreateUserService {
     const emailExists = await usersRepository.findByEmail(email);
 
     if (emailExists) {
-      throw new AppError("Email address Alredy use.");
+      throw new AppError("Email address Alredy use.", 401);
     }
 
     const hashedPasswaord = await hash(password, 8);
@@ -27,7 +27,6 @@ class CreateUserService {
       password: hashedPasswaord,
     });
 
-    console.log("Chegou aqui22");
     await usersRepository.save(user);
 
     return user;
