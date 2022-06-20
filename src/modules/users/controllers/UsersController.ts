@@ -1,4 +1,4 @@
-import { Request } from "express";
+import { Request, Response } from "express";
 import CreateUserService from "../services/CreateUserService";
 import ListUserService from "../services/ListUserService";
 
@@ -7,6 +7,7 @@ export default class UsersController {
     const listUser = new ListUserService();
 
     const users = await listUser.execute();
+
     return response.json(users);
   }
 
